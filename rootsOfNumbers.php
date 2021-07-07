@@ -29,5 +29,4 @@ function readFileNumbersAscending(string $fileName)
     fclose($file);
 }
 
-
 echo readFileNumbersAscending('file.txt');
