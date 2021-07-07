@@ -9,6 +9,8 @@ function readFileNumbersAscending(string $fileName)
 
     $file = fopen($fileName, 'r');
 
+    $bites = 0b0000000000;
+    
     if ($file)
     {
         while(!feof($file))
@@ -20,7 +22,7 @@ function readFileNumbersAscending(string $fileName)
                 continue;
             }
 
-            // 404 solution not found... thinking
+            $number = 0b0000000001 | $bites << $number;
         }
     }
 
