@@ -46,6 +46,7 @@
             && convertDateTimeInSeconds($endDate1) >= convertDateTimeInSeconds($startDate2) ? true : false;
         }
 
+        //Return overlapping if ValidateDates fails
         return true;
     }
 
