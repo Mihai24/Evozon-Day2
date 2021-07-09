@@ -1,6 +1,6 @@
 <?php
 
-function readFileNumbersAscending(string $fileName)
+function readFileNumbersAscending(string $fileName): void
 {
     if (!file_exists($fileName))
     {
@@ -9,24 +9,33 @@ function readFileNumbersAscending(string $fileName)
 
     $file = fopen($fileName, 'r');
 
-    $bites = 0b0000000000;
-    
+    $bites = 0;
+
     if ($file)
     {
-        while(!feof($file))
-        {
+        while(!feof($file)) {
             $number = fgetc($file);
 
-            if ($number == ' ')
-            {
+            if ($number === false) {
+                break;
+            }
+
+            if ($number == ' ') {
                 continue;
             }
 
-            $number = 0b0000000001 | $bites << $number;
+            $bites = (1 << (int)$number) | $bites;
         }
     }
-
     fclose($file);
+
+    for ($i = 0; $i <= 9; $i++)
+    {
+        if ((1 << $i) & $bites)
+        {
+            echo $i . ' ';
+        }
+    }
 }
 
-echo readFileNumbersAscending('file.txt');
+readFileNumbersAscending('file');
