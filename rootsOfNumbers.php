@@ -16,6 +16,8 @@ function readFileNumbersAscending(string $fileName): void
         while(!feof($file)) {
             $number = fgetc($file);
 
+            //fgetc get the last byte position for two times
+            //verify if fgetc reads another byte
             if ($number === false) {
                 break;
             }
